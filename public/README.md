@@ -44,8 +44,8 @@ Then make sure you take the `entire song object` and pass it to your `myTunes.ad
 ```
 
 Requirements:
-- `2.5 points`: All songs are drawn to the page with an extra button
-- `5 points`: Entire song objects are passed to the myTunesService
+- `2.5 points`: All songs are drawn to the page with an extra buttons to add to myTunes
+- `5 points`: Entire song objects are passed to the store
 - `2.5 points`: Once a song is sent to the `myTunes` it needs to be added to the `myTracks` array
 
 ### Step 2 - The MyTunes Component `Total Points: 10`
@@ -64,49 +64,31 @@ Key features here will include:
 Also don't forget it would be useless to keep around a list if you couldn't still play the songs.
 
 Requirements:
-- `2.5 points`: Remove Track
-- `2.5 points`: Promote Track
-- `2.5 points`: Demote Track
-- `2.5 points`: Persist your data with local storage 
+- `1 points`: Remove Track
+- `3 points`: Promote/Demote Track
+- `5 points`: Persist your data with mongoDB
   - This is pretty much a gimme make sure you call the functions when needed
 
 ### BONUS - Some enhancing features `Total Points: 5`
 Requirements: 
+- User Auth (3pts)
 - Have your myTunes List slide in and out when wanting to access it
-- Implement dragging to reorder your songs
-- Implement a drag to favorites
+- Implement dragging to reorder your songs and drag to add to favorites
 
 > Stretch Goal: Allow the user to create multiple playlists and manage the songs on each playlist 
 > ***HINT:*** 
 
 ```javascript
-let myTunes = { 
+let store = { 
   playlists: { 
-    "90's Rock": {}, 
-    "Best of the 90's": {} 
+    "90's Rock": [], 
+    "Best of the 90's": [] 
   }
 }
 
 // You probably will need a few extra public methods
 // CreatePlaylist()
 // RemovePlaylist()
+
+//And an extra Schema....
 ```
-
-### Publishing to GH-Pages
-To publish to gh-pages you are going to need to run the build command from your command line
-
-```
-[~/source/codeworks/vue-music-checkpoint]
-$ npm run build
-```
-
-When this command finishes you will notice you now have a directory named `docs`
-
-Push your project to github and then navigate to the settings tab for your repo and be sure to change the settings for gh-pages to use the `docs` directory
-
-<img src="gh-pages-example.png" width="600">
-
-Anytime you make changes to your `src` be sure to repeat this step...
-
-### Finished?
-When You are finished please slack the url for your github repo to your mentor in a DM. Be sure you add this project to your gh-pages if you want credit for it.

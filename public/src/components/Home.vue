@@ -19,21 +19,16 @@ export default {
 
 
 <style>
-/**
-* YOU SHOULD PROBABLY MAKE THIS LOOK BETTER :)
-* BOOTSTRAP IS FOR THE WEAK FLEXBOX IS KING
-* -- McCall
-**/
 .my-tunes{
   display: inline-block;
   min-height: 500px;
   min-width: 50%;
-  background: purple;
+  background: green;
 }
 
 .itunes{
   display: inline-block;
-  background: pink;
+  background: red;
   min-height: 500px;
   min-width: 45%;
 }
