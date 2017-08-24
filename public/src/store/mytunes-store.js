@@ -7,7 +7,7 @@ vue.use(vuex)
 var store = new vuex.Store({
   state: {
     myTunes: [],
-    results: []
+    results:[]
   },
   mutations: {
     setResults(state, results){

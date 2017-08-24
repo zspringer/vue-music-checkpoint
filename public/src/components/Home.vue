@@ -1,36 +1,56 @@
 <template>
   <div class="home">
     <!-- YOU WILL PROBABLY END UP WITH SOMETHING LIKE THIS -->
-    <my-tunes class="my-tunes"></my-tunes>
-    <itunes class="itunes"></itunes>
+    <div class="row">
+      <div class="col-xs-12">
+        <form @submit.prevent="search()">
+          <input type="text" v-model="query">
+          <button type="submit">Search</button>
+        </form>
+        <MyTunes class="my-tunes"></MyTunes>
+        <Itunes class="itunes"></Itunes>
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
-export default {
-  name: 'home',
-  data () {
-    return {
-      
+  import { store } from '../store/mytunes-store'
+  import Itunes from './Itunes'
+  import MyTunes from './MyTunes'
+  export default {
+    name: 'home',
+    data() {
+      return {
+        query: ''
+      }
+    },
+    methods: {
+      search() {
+         this.$store.dispatch('getMusicByArtist', this.query)
+      }
+    },
+    components: {
+      Itunes,
+      MyTunes
     }
   }
-}
+
 </script>
 
 
 <style>
-.my-tunes{
-  display: inline-block;
-  min-height: 500px;
-  min-width: 50%;
-  background: green;
-}
+  .my-tunes {
+    display: inline-block;
+    min-height: 500px;
+    min-width: 50%;
+    background: green;
+  }
 
-.itunes{
-  display: inline-block;
-  background: red;
-  min-height: 500px;
-  min-width: 45%;
-}
-
+  .itunes {
+    display: inline-block;
+    background: red;
+    min-height: 500px;
+    min-width: 45%;
+  }
 </style>

@@ -1,19 +1,23 @@
 <template>
   <div id="app">
-    <home></home>
+    <Home></Home>
   </div>
 </template>
 
 <script>
-import Home from './components/Home'
+  import Home from './components/Home'
+  import MyTunes from './components/MyTunes'
 
-export default {
-  name: 'app',
-  components: {
-    Home
+  export default {
+    name: 'app',
+    components: {
+      Home,
+      MyTunes
+    }
   }
-}
+
 </script>
 
 <style>
+
 </style>
