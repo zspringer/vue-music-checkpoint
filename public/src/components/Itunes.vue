@@ -4,7 +4,7 @@
         <div v-for="song in songs">
             <div class="col-xs-12">
                 <h3>{{song.artistName}}</h3>
-                <img height="100px" width="100px" class="img-responsive" style="margin:0 auto;" src="{song.artworkUrl100}"></img>
+                <img height="100px" width="100px" class="img-responsive" style="margin:0 auto;" :src="song.artworkUrl100"></img>
             <!-- <div onclick="document.getElementById('{{song.trackId}}').play()">Song title:{{song.title}}</div>
             <div>Album title: {{song.collection}}</div>
             <div>Price: {{song.price}}</div>
