@@ -18,9 +18,9 @@ router
     })
         .post('/', (req, res, next) => {
             songs.create(req.body)
-                .then(songs => {
-                    console.log(songs)
-                    res.send(songs)
+                .then(song => {
+                    console.log(song)
+                    res.send(song)
                 }).catch(next)
         })
         .delete('/:id', (req, res, next) => {

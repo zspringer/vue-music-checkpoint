@@ -7,60 +7,79 @@ vue.use(vuex)
 var store = new vuex.Store({
   state: {
     myTunes: [],
-    results:[]
+    results: []
   },
+
+
+
+
   mutations: {
-    setResults(state, results){
+    setResults(state, results) {
       state.results = results
     },
-    saveMyTunes(state, song){
+    saveMyTunes(state, song) {
       state.myTunes.push(song)
       // console.log(state.myTunes)
     },
-    removeMyTunes(state, song){
+    removeMyTunes(state, song) {
       var index = state.myTunes.indexOf(song)
       state.myTunes.splice(index, 1)
     },
-    promoteMyTunes(state, song){
+    promoteMyTunes(state, song) {
       var index = state.myTunes.indexOf(song)
-      state.myTunes.splice((index-1),2,song,state.myTunes[index-1])
+      state.myTunes.splice((index - 1), 2, song, state.myTunes[index - 1])
 
     },
-    demoteMyTunes(state, song){
+    demoteMyTunes(state, song) {
       var index = state.myTunes.indexOf(song)
-      state.myTunes.splice((index),2,state.myTunes[index+1],song)
+      state.myTunes.splice((index), 2, state.myTunes[index + 1], song)
     }
 
   },
   actions: {
-    getMusicByArtist({commit, dispatch}, artist) {
+    getMusicByArtist({ commit, dispatch }, artist) {
       var url = '//bcw-getter.herokuapp.com/?url=';
       var url2 = 'https://itunes.apple.com/search?term=' + artist;
       var apiUrl = url + encodeURIComponent(url2);
-      $.get(apiUrl).then(data=>{
+      $.get(apiUrl).then(data => {
         //FIX THE JSON PARSE SECTION
-       var songs =JSON.parse(data)
+        var songs = JSON.parse(data)
         commit('setResults', songs.results)
       })
     },
-    getMyTunes({commit, dispatch}){
+    getMyTunes({ commit, dispatch }) {
       //this should send a get request to your server to return the list of saved tunes
+      $.get(`//localhost:3000/api/songs`)
+        .then(songs => {
+          commit('saveMyTunes', songs);
+        })
+        .fail(data => {
+          console.log(data)
+        })
     },
-    addToMyTunes({commit, dispatch}, song){
+    addToMyTunes({ commit, dispatch }, song) {
       //this will post to your server adding a new track to your tunes
       //TODO: ADD CONDITIONAL THAT WILL PREVENT HAVING DUPLICATE TRACKS
-      commit('saveMyTunes', song)
+      $.post('//localhost:3000/api/songs', song)
+        .then(song => {
+          commit('saveMyTunes', song)
+        })
+        .fail(data => {
+          console.log(data)
+        })
+
       // console.log(song)
     },
-    removeTrack({commit, dispatch}, song){
+    removeTrack({ commit, dispatch }, song) {
       //Removes track from the database with delet
+      
       commit('removeMyTunes', song)
     },
-    promoteTrack({commit, dispatch}, song){
+    promoteTrack({ commit, dispatch }, song) {
       //this should increase the position / upvotes and downvotes on the track
       commit('promoteMyTunes', song)
     },
-    demoteTrack({commit, dispatch}, song){
+    demoteTrack({ commit, dispatch }, song) {
       //this should decrease the position / upvotes and downvotes on the track
       commit('demoteMyTunes', song)
     }
