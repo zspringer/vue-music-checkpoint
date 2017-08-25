@@ -20,7 +20,17 @@ var store = new vuex.Store({
     removeMyTunes(state, song){
       var index = state.myTunes.indexOf(song)
       state.myTunes.splice(index, 1)
+    },
+    promoteMyTunes(state, song){
+      var index = state.myTunes.indexOf(song)
+      state.myTunes.splice((index-1),2,song,state.myTunes[index-1])
+
+    },
+    demoteMyTunes(state, song){
+      var index = state.myTunes.indexOf(song)
+      state.myTunes.splice((index),2,state.myTunes[index+1],song)
     }
+
   },
   actions: {
     getMusicByArtist({commit, dispatch}, artist) {
@@ -48,9 +58,11 @@ var store = new vuex.Store({
     },
     promoteTrack({commit, dispatch}, song){
       //this should increase the position / upvotes and downvotes on the track
+      commit('promoteMyTunes', song)
     },
     demoteTrack({commit, dispatch}, song){
       //this should decrease the position / upvotes and downvotes on the track
+      commit('demoteMyTunes', song)
     }
 
   }

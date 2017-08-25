@@ -32,6 +32,12 @@
       removeTrack(song) {
         this.$store.dispatch("removeTrack", song)
         console.log(song)
+      },
+      promoteTrack(song) {
+        this.$store.dispatch("promoteTrack", song)
+      },
+      demoteTrack(song) {
+        this.$store.dispatch("demoteTrack", song)
       }
     },
     computed: {
