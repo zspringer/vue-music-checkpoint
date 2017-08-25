@@ -3,12 +3,19 @@
     <!-- YOU WILL PROBABLY END UP WITH SOMETHING LIKE THIS -->
     <div class="row">
       <div class="col-xs-12">
-          <form @submit.prevent="search()">
-              <input type="text" v-model="query">
-              <button type="submit">Search</button>
-          </form>
-        <MyTunes class="my-tunes"></MyTunes>
-        <Itunes class="itunes"></Itunes>
+        <form @submit.prevent="search()">
+          <input type="text" v-model="query">
+          <button type="submit">Search</button>
+        </form>
+      
+        <!-- <div class="row"> -->
+          <!-- <div class="col-xs-6"> -->
+            <Itunes class="itunes"></Itunes>
+          <!-- </div> -->
+          <!-- <div class="col-xs-6"> -->
+            <MyTunes class="my-tunes"></MyTunes>
+          <!-- </div> -->
+        <!-- </div> -->
       </div>
     </div>
   </div>
@@ -27,8 +34,8 @@
     },
     methods: {
       search() {
-                this.$store.dispatch('getMusicByArtist', this.query)
-            }
+        this.$store.dispatch('getMusicByArtist', this.query)
+      }
     },
     components: {
       Itunes,

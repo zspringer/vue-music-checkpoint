@@ -12,6 +12,14 @@ var store = new vuex.Store({
   mutations: {
     setResults(state, results){
       state.results = results
+    },
+    saveMyTunes(state, song){
+      state.myTunes.push(song)
+      // console.log(state.myTunes)
+    },
+    removeMyTunes(state, song){
+      var index = state.myTunes.indexOf(song)
+      state.myTunes.splice(index, 1)
     }
   },
   actions: {
@@ -28,16 +36,20 @@ var store = new vuex.Store({
     getMyTunes({commit, dispatch}){
       //this should send a get request to your server to return the list of saved tunes
     },
-    addToMyTunes({commit, dispatch}, track){
+    addToMyTunes({commit, dispatch}, song){
       //this will post to your server adding a new track to your tunes
+      //TODO: ADD CONDITIONAL THAT WILL PREVENT HAVING DUPLICATE TRACKS
+      commit('saveMyTunes', song)
+      // console.log(song)
     },
-    removeTrack({commit, dispatch}, track){
-      //Removes track from the database with delete
+    removeTrack({commit, dispatch}, song){
+      //Removes track from the database with delet
+      commit('removeMyTunes', song)
     },
-    promoteTrack({commit, dispatch}, track){
+    promoteTrack({commit, dispatch}, song){
       //this should increase the position / upvotes and downvotes on the track
     },
-    demoteTrack({commit, dispatch}, track){
+    demoteTrack({commit, dispatch}, song){
       //this should decrease the position / upvotes and downvotes on the track
     }
 
