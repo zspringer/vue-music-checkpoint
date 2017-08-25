@@ -3,10 +3,10 @@
     <!-- YOU WILL PROBABLY END UP WITH SOMETHING LIKE THIS -->
     <div class="row">
       <div class="col-xs-12">
-        <form @submit.prevent="search()">
-          <input type="text" v-model="query">
-          <button type="submit">Search</button>
-        </form>
+          <form @submit.prevent="search()">
+              <input type="text" v-model="query">
+              <button type="submit">Search</button>
+          </form>
         <MyTunes class="my-tunes"></MyTunes>
         <Itunes class="itunes"></Itunes>
       </div>
@@ -27,8 +27,8 @@
     },
     methods: {
       search() {
-         this.$store.dispatch('getMusicByArtist', this.query)
-      }
+                this.$store.dispatch('getMusicByArtist', this.query)
+            }
     },
     components: {
       Itunes,
