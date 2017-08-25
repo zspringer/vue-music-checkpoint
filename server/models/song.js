@@ -2,11 +2,12 @@ var mongoose = require("mongoose");
 var ObjectId = mongoose.Schema.ObjectId
 
 var songSchema = new mongoose.Schema({
-    artistname: { type: String, required: true},
-    trackname: { type: String, required: true},
-    collectionname: { type: String, required: true},
-    collectionprice: { type: Number, required: true},
-    previewurl: {type: String, required: true}
+    artistName: { type: String, required: true},
+    trackName: { type: String, required: true},
+    collectionName: { type: String, required: true},
+    collectionPrice: { type: String, required: true},
+    previewUrl: {type: String, required: true},
+    artworkUrl100: {type: String, required: true}
 })
 
 var Songs= mongoose.model("Song", songSchema);

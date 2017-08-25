@@ -28,6 +28,9 @@
 
       }
     },
+    mounted() {
+      this.$store.dispatch("getMyTunes")
+    },
     methods: {
       removeTrack(song) {
         this.$store.dispatch("removeTrack", song)
