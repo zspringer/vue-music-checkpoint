@@ -1,21 +1,25 @@
 <template>
-  <div class="home">
+  <div class="container-fluid home">
     <!-- YOU WILL PROBABLY END UP WITH SOMETHING LIKE THIS -->
     <div class="row">
       <div class="col-xs-12">
+        <h1>Zach's Vue version of Music is Fun Checkpoint</h1>
         <form @submit.prevent="search()">
           <input type="text" v-model="query">
           <button type="submit">Search</button>
         </form>
+
+      </div>
+    </div>
       
-        <!-- <div class="row"> -->
-          <!-- <div class="col-xs-6"> -->
+        <div class="row">
+          <div class="col-xs-6">
             <Itunes class="itunes"></Itunes>
-          <!-- </div> -->
-          <!-- <div class="col-xs-6"> -->
+          </div>
+          <div class="col-xs-6">
             <MyTunes class="my-tunes"></MyTunes>
-          <!-- </div> -->
-        <!-- </div> -->
+          </div>
+        </div>
       </div>
     </div>
   </div>

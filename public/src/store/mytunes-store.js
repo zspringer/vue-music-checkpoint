@@ -4,6 +4,8 @@ import $ from 'jquery'
 
 vue.use(vuex)
 
+
+
 var store = new vuex.Store({
   state: {
     myTunes: [],
@@ -17,13 +19,19 @@ var store = new vuex.Store({
     setResults(state, results) {
       state.results = results
     },
+
+    setMyTunes(state, songs){
+      state.myTunes = songs
+    },
+
     saveMyTunes(state, song) {
       state.myTunes.push(song)
       // console.log(state.myTunes)
     },
     removeMyTunes(state, song) {
-      var index = state.myTunes.indexOf(song)
-      state.myTunes.splice(index, 1)
+      // state.myTunes = []
+      // var index = state.myTunes.indexOf(song)
+      // state.myTunes.splice(index, 1)
     },
     promoteMyTunes(state, song) {
       var index = state.myTunes.indexOf(song)
@@ -49,9 +57,10 @@ var store = new vuex.Store({
     },
     getMyTunes({ commit, dispatch }) {
       //this should send a get request to your server to return the list of saved tunes
-      $.get(`//localhost:3000/api/songs`)
+      //Had to add a mutation setMyTunes to get the state of the songs on the server
+      $.get('//localhost:3000/api/songs')
         .then(songs => {
-          commit('saveMyTunes', songs);
+          commit('setMyTunes', songs);
         })
         .fail(data => {
           console.log(data)
@@ -71,9 +80,21 @@ var store = new vuex.Store({
       // console.log(song)
     },
     removeTrack({ commit, dispatch }, song) {
-      //Removes track from the database with delet
-      
-      commit('removeMyTunes', song)
+      //Removes track from the database with delete
+      // commit('removeMyTunes', song)
+      //should be an ajax request as it is dealing with a server and not local 
+      // console.log("I am at removeTrack")
+      $.ajax({
+        method: 'DELETE',
+        contentType: 'application/json',
+        url: '//localhost:3000/api/songs/' + song._id
+      })
+        .then((res) => {
+          dispatch('getMyTunes')
+        })
+        .fail(() => {
+          console.log("could not remove track from myTunes")
+        })
     },
     promoteTrack({ commit, dispatch }, song) {
       //this should increase the position / upvotes and downvotes on the track
