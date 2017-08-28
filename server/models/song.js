@@ -7,7 +7,8 @@ var songSchema = new mongoose.Schema({
     collectionName: { type: String, required: true},
     collectionPrice: { type: String, required: true},
     previewUrl: {type: String, required: true},
-    artworkUrl100: {type: String, required: true}
+    artworkUrl100: {type: String, required: true},
+    songOrder: {type: Number, required: True, default: 0}
 })
 
 var Songs= mongoose.model("Song", songSchema);

@@ -1,24 +1,24 @@
 <template>
   <div class="container-fluid home">
     <!-- YOU WILL PROBABLY END UP WITH SOMETHING LIKE THIS -->
-    <div class="row">
+    <div class="row header-area">
       <div class="col-xs-12">
-        <h1>Zach's Vue version of Music is Fun Checkpoint</h1>
-        <form @submit.prevent="search()">
+        <h1 class="main-header">Zach's Vue version of Music is Fun Checkpoint</h1>
+        <!-- <form @submit.prevent="search()">
           <input type="text" v-model="query">
           <button type="submit">Search</button>
-        </form>
+        </form> -->
 
       </div>
     </div>
       
         <div class="row">
-          <div class="col-xs-6">
-            <Itunes class="itunes"></Itunes>
-          </div>
-          <div class="col-xs-6">
-            <MyTunes class="my-tunes"></MyTunes>
-          </div>
+          <!-- <div class="col-xs-6"> -->
+            <Itunes class="itunes text-center"></Itunes>
+          <!-- </div> -->
+          <!-- <div class="col-xs-6"> -->
+            <MyTunes class="my-tunes text-center"></MyTunes>
+          <!-- </div> -->
         </div>
       </div>
     </div>
@@ -33,13 +33,11 @@
     name: 'home',
     data() {
       return {
-        query: ''
+        // query: ''
       }
     },
     methods: {
-      search() {
-        this.$store.dispatch('getMusicByArtist', this.query)
-      }
+      
     },
     components: {
       Itunes,
@@ -51,9 +49,14 @@
 
 
 <style>
+  .header-area{
+    background-color: black;
+    padding: 20px;
+    color: white;
+  }
   .my-tunes {
     display: inline-block;
-    min-height: 500px;
+    min-height: 100%;
     min-width: 50%;
     background: green;
   }
@@ -61,7 +64,8 @@
   .itunes {
     display: inline-block;
     background: red;
-    min-height: 500px;
-    min-width: 45%;
+    min-height: 100%;
+    min-width: 50%;
   }
+
 </style>

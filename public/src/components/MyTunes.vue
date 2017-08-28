@@ -1,22 +1,28 @@
 <template>
-  <div class="mytunes">
-    <h1>MyTunes</h1>
-    <div v-for="song in songs">
-      <div class="col-xs-12">
-        <h3>{{song.artistName}}</h3>
+  <div class="col-xs-6">
+    <div class="mytunes">
+      <h1>MyTunes</h1>
+      <div v-for="song in songs">
+        <marquee>
+          <h1>{{song.artistName}}</h1>
+        </marquee>
         <img height="100px" width="100px" class="img-responsive" style="margin:0 auto;" :src="song.artworkUrl100"></img>
         <div>{{song.trackName}}</div>
         <div>Album title: {{song.collectionName}}</div>
         <div>Price: {{song.collectionPrice}}</div>
-        <audio controls id="audio-box-song.trackId">
-          <source :src=song.previewUrl type="audio/mp4">
-        </audio>
-        <button @click="removeTrack(song)" class="Remove">Remove Track</button>
-        <button @click="promoteTrack(song)" class="Promote">Promote</button>
-        <button @click="demoteTrack(song)" class="Demote">Demote</button>
+        <div class="controls">
+          <audio controls id="audio-box-song.trackId">
+            <source :src=song.previewUrl type="audio/mp4">
+          </audio>
+          <div class="row">
+            <button @click="removeTrack(song)" class="Remove">Remove Track</button>
+            <button @click="promoteTrack(song)" class="Promote">Promote</button>
+            <button @click="demoteTrack(song)" class="Demote">Demote</button>
+          </div>
+        </div>
       </div>
-    </div>
 
+    </div>
   </div>
 </template>
 
@@ -71,5 +77,19 @@
 
   a {
     color: #42b983;
+  }
+
+  .mytunes {
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    padding: 10px;
+    margin-bottom: 10px;
+    max-height: 500px;
+    overflow-y: auto;
+    overflow-x: hidden;
+  }
+
+  .controls {
+    display: inline-block;
   }
 </style>
