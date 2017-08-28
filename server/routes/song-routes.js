@@ -29,6 +29,13 @@ router
                     res.send({ message: 'Successfully Removed' })
                 }).catch(next)
         })
+        .put('/:id', (req, res, next)=>{
+            var id = req.params.id
+            songs.findByIdAndUpdate(id, req.body)
+              .then(song =>{
+                res.send({message: 'Successfully Updated'})
+              }).catch(next)
+          })
 
 router.use('/', (err, req, res, next) => {
     if (err) {

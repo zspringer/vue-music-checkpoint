@@ -2,6 +2,8 @@ import vue from 'vue'
 import vuex from 'vuex'
 import $ from 'jquery'
 
+
+
 vue.use(vuex)
 
 var server = '//localhost:3000'
@@ -117,11 +119,12 @@ var store = new vuex.Store({
       //the commit below code is only good for rearranging in local storage
       //commit('promoteMyTunes', song)
       // debugger
-      var ranking = songOrder + 1
+      var ranking = {"songOrder":song.songOrder + 1}
       $.ajax({
         method: 'PUT',
         contentType: 'application/json',
         url: server + '/api/songs/' + song._id,
+        data: JSON.stringify(ranking)
       })
         .then((song) => {
           dispatch('getMyTunes')
@@ -138,11 +141,12 @@ var store = new vuex.Store({
       //see the note in the promote track for why commit doesn't work for server style storage
       //commit('demoteMyTunes', song)
       //Need a 'put' ajax request
-      var ranking = songOrder -1
+      var ranking = {"songOrder": song.songOrder -1}
       $.ajax({
         method: 'PUT',
         contentType: 'application/json',
         url: server + '/api/songs/' + song._id,
+        data: JSON.stringify(ranking)
       })
         .then((song) => {
           dispatch('getMyTunes')

@@ -8,7 +8,7 @@ var songSchema = new mongoose.Schema({
     collectionPrice: { type: String, required: true},
     previewUrl: {type: String, required: true},
     artworkUrl100: {type: String, required: true},
-    songOrder: {type: Number, required: True, default: 0}
+    songOrder: {type: Number, required: true, default: 0}
 })
 
 //added songOrder to schema
