@@ -22,4 +22,4 @@ server.listen(port, () => {
     console.log("starting up Node, on port", port)
 })
 
-var dbConnect = require("./Config/db/mlab-config");
+var dbConnect = require("./Config/db/Mlab-config");
