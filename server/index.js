@@ -3,9 +3,10 @@ var bodyParser = require("body-parser");
 var mongoose = require("mongoose");
 var songRoutes = require('./routes/song-routes')
 var server = express();
-var port = 3000;
+var port = process.env.PORT || 3000;
 var cors = require('cors')
 
+var dbConnect = require("./Config/db/Mlab-config");
 
 
 //MIDDLEWARE
@@ -21,5 +22,3 @@ server.use('/api/songs', songRoutes)
 server.listen(port, () => {
     console.log("starting up Node, on port", port)
 })
-
-var dbConnect = require("./Config/db/Mlab-config");
