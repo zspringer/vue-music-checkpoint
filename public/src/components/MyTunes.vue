@@ -84,7 +84,7 @@
     border-radius: 6px;
     padding: 10px;
     margin-bottom: 10px;
-    max-height: 500px;
+    max-height: 1000px;
     overflow-y: auto;
     overflow-x: hidden;
   }
