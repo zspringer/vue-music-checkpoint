@@ -12,7 +12,7 @@ var cors = require('cors')
 
 server.use(cors())
 server.options('*', cors())
-server.use(express.static(__dirname + "/public/dist"))
+server.use(express.static(__dirname + "../public/dist"))
 server.use(bodyParser.json())
 server.use(bodyParser.urlencoded({ extended: true }))
 
