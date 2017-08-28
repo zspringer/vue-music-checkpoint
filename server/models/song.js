@@ -11,6 +11,8 @@ var songSchema = new mongoose.Schema({
     songOrder: {type: Number, required: True, default: 0}
 })
 
+//added songOrder to schema
+
 var Songs= mongoose.model("Song", songSchema);
 
 module.exports = Songs
