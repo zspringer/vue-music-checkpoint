@@ -6,7 +6,7 @@ import $ from 'jquery'
 
 vue.use(vuex)
 
-var server = '//localhost:3000'
+var server = '//vue-music-is-fun.herokuapp.com'
 
 var store = new vuex.Store({
   state: {
